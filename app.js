@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-const port = process.env.port || 80;
 const axios = require("axios");
 require("dotenv").config();
 const BASE_ID = process.env.BASE_ID;
 const API_KEY = process.env.API_KEY;
+const port = process.env.PORT || 80;
 
 app.get("/", (req, res) => {
   res.send("hellow world");
