@@ -15,12 +15,6 @@ app.get("/products", async (req, res) => {
   res.json(prodData);
 });
 
-app.get("/ads", async (req, res) => {
-  const adsData = await getAd();
-  adsData.src = adsData.src[0].thumbnails.large.url;
-  res.json(adsData);
-});
-
 const getProduct = async () => {
   try {
     const products = await axios.get(
@@ -33,22 +27,6 @@ const getProduct = async () => {
     );
 
     return products.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getAd = async () => {
-  try {
-    const ads = await axios.get(
-      "https://api.airtable.com/v0/appWbbrXlt6MTAISZ/Table%201?view=Grid%20view",
-      {
-        headers: {
-          Authorization: `Bearer ${API_KEY}`
-        }
-      }
-    );
-    return ads.data.records[0].fields;
   } catch (error) {
     console.log(error);
   }
